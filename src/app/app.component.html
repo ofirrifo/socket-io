@@ -1,0 +1,10 @@
+<div class="grid">
+  <div class="left">
+   Send Data To Server
+    <input #input type="text" placeholder="Enter some text" (input)="input$.next(input.value)">
+  </div>
+  <div class="right">
+    Data From Server
+    <div>{{data | json}}</div>
+  </div>
+</div>

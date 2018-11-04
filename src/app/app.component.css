@@ -1,0 +1,27 @@
+.grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px 200px;
+  grid-gap: 20px;
+
+}
+
+.left {
+  background-color: #4CAF50;
+  display: flex;
+  align-items: center;
+
+}
+
+input {
+  height: 32px;
+  width: 332px;
+  margin-left: 20px;
+}
+
+.right {
+  background-color: #448AFF;
+  display: flex;
+  align-items: center;
+}
