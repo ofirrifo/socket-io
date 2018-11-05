@@ -1,7 +1,12 @@
 <div class="grid">
   <div class="left">
-   Send Data To Server
-    <input #input type="text" placeholder="Enter some text" (input)="input$.next(input.value)">
+    <div style="display: flex; flex-direction: column">
+      <div style="color: red">DASHBOARD:</div>
+      <div>
+        Send Data To Server
+        <input #input type="text" autofocus placeholder="Enter some text" (input)="input$.next(input.value)">
+      </div>
+    </div>
   </div>
   <div class="right">
     Data From Server
@@ -9,8 +14,13 @@
   </div>
 
   <div class="left">
-    Send Data To Server
-    <input #input2 type="text" placeholder="Enter some text" (input)="input2$.next(input2.value)">
+    <div style="display: flex; flex-direction: column">
+      <div style="color: red">TERMINAL:</div>
+      <div>
+        Send Data To Server
+        <input #input2 type="text" placeholder="Enter some text" (input)="input2$.next(input2.value)">
+      </div>
+    </div>
   </div>
   <div class="right">
     Data From Server
