@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SocketUtils } from './socket-utils';
+import { TerminalSocket } from './socket/terminal-socket';
+import { DashboardSocket } from './socket/dashboard-socket';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +14,9 @@ import { SocketUtils } from './socket-utils';
 export class AppComponent {
   data;
   data2;
-  private socketUtils = SocketUtils.instance;
+  private dashboardSocket = DashboardSocket.instance;
+  private terminalSocket = TerminalSocket.instance;
+
 
   input$ = new Subject();
   input2$ = new Subject();
@@ -21,22 +27,22 @@ export class AppComponent {
   }
 
   terminal1(): void {
-    this.socketUtils.socketTerminal.on('message', (data) => {
+    this.terminalSocket.socket.on('message', (data) => {
       this.data = data;
     });
 
     this.input$.subscribe((data) => {
-      this.socketUtils.socketTerminal.emit('message', JSON.stringify(data));
+      this.terminalSocket.socket.emit('message', JSON.stringify(data));
     });
   }
 
   terminal2(): void {
-    this.socketUtils.socketTerminal2.on('message', (data) => {
+    this.dashboardSocket.socket.on('message', (data) => {
       this.data2 = data;
     });
 
     this.input2$.subscribe((data) => {
-      this.socketUtils.socketTerminal2.emit('message', JSON.stringify(data));
+      this.dashboardSocket.socket.emit('message', JSON.stringify(data));
     });
   }
 
