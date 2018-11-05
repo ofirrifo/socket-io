@@ -1,3 +1,5 @@
 - npm install socket.io-client
 - npm install @types/socket.io-client
 - add to file polyfills.ts >> `(window as any).global = window;`
+- xterm css >> https://github.com/xtermjs/xterm.js/blob/master/src/xterm.css
+- xterm import >> https://xtermjs.org/docs/guides/import/
