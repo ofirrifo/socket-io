@@ -10,6 +10,11 @@ export const TERMINAL_OPTIONS: ITerminalOptions = {
     background: '#262b37', // background color
   }
 };
+export const TERMINAL_OPTIONS_OUTPUT: ITerminalOptions = {
+  theme: {
+    background: '#FF0000', // background color
+  }
+};
 
 @Component({
   selector: 'app-terminal',
@@ -19,8 +24,10 @@ export const TERMINAL_OPTIONS: ITerminalOptions = {
 export class TerminalComponent implements OnInit {
 
   @Input() roomName: string;
+  @Input() withOutput: boolean;
 
   @ViewChild('terminal') terminalElement;
+  @ViewChild('terminalOutput') terminalOutputElement;
   private terminalSocket = TerminalSocket.instance;
 
 
@@ -29,11 +36,38 @@ export class TerminalComponent implements OnInit {
 
   ngOnInit() {
 
+
+    this.terminal();
+    if (this.withOutput) {
+      this.terminalOutput();
+    }
+  }
+
+  terminal() {
     Terminal.applyAddon(fit);
     const term: any = new Terminal(TERMINAL_OPTIONS);
     term.writeln(`${redText}${this.roomName}${resetText}`);
 
     term.open(this.terminalElement.nativeElement);
+    term.fit();
+
+    if (!this.terminalOutput) {
+      term.on('data', (data) => {
+        this.terminalSocket.emit(this.roomName, data);
+      });
+    }
+
+
+    this.terminalSocket.socket.on(this.roomName, (data) => {
+      term.write(data.text);
+    });
+  }
+
+  terminalOutput(): void {
+    Terminal.applyAddon(fit);
+    const term: any = new Terminal(TERMINAL_OPTIONS_OUTPUT);
+
+    term.open(this.terminalOutputElement.nativeElement);
     term.fit();
     term.on('data', (data) => {
       this.terminalSocket.emit(this.roomName, data);
@@ -42,7 +76,6 @@ export class TerminalComponent implements OnInit {
     this.terminalSocket.socket.on(this.roomName, (data) => {
       term.write(data.text);
     });
-
   }
 
 }
