@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ITerminalOptions, Terminal } from 'xterm';
 import { TerminalSocket } from '../socket/terminal-socket';
 import * as fit from 'xterm/lib/addons/fit/fit';
@@ -21,10 +21,10 @@ export const TERMINAL_OPTIONS_OUTPUT: ITerminalOptions = {
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss']
 })
-export class TerminalComponent implements OnInit {
+export class TerminalComponent implements OnInit, AfterViewInit {
 
   @Input() roomName: string;
-  @Input() withOutput = false;
+  @Input() withOutput;
 
   @ViewChild('terminal') terminalElement;
   @ViewChild('terminalOutput') terminalOutputElement;
@@ -36,7 +36,9 @@ export class TerminalComponent implements OnInit {
 
   ngOnInit() {
 
+  }
 
+  ngAfterViewInit(): void {
     this.terminal();
     if (this.withOutput) {
       this.terminalOutput();
@@ -80,5 +82,6 @@ export class TerminalComponent implements OnInit {
       term.write(data.text);
     });
   }
+
 
 }
