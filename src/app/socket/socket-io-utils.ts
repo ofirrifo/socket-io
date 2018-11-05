@@ -7,4 +7,8 @@ export abstract class SocketIoUtils {
     this.socket = io(`http://localhost:5000/${namespace}`);
   }
 
+  emit(roomName: string, data: any) {
+    this.socket.emit(roomName, data);
+  }
+
 }

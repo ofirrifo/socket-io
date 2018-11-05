@@ -31,7 +31,7 @@ export class TerminalComponent implements OnInit {
     term.open(this.terminalElement.nativeElement);
     term.fit();
     term.on('data', (data) => {
-      this.terminalSocket.socket.emit(this.roomName, data);
+      this.terminalSocket.emit(this.roomName, data);
     });
 
     this.terminalSocket.socket.on(this.roomName, (data) => {

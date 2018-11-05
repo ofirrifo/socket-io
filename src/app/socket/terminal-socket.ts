@@ -10,4 +10,5 @@ export class TerminalSocket extends SocketIoUtils {
   static get instance(): TerminalSocket {
     return TerminalSocket._instance;
   }
+
 }
