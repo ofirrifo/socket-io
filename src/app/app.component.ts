@@ -26,7 +26,7 @@ export class AppComponent {
 
   terminal1(): void {
     this.terminalSocket.socket.on('message', (data) => {
-      this.data = data;
+      this.data = JSON.parse(JSON.stringify(data));
     });
 
     this.input$.subscribe((data) => {
