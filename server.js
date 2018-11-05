@@ -2,7 +2,7 @@ let app = require('express')();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
 
-var terminalIo = io.of('/terminal');
+var terminalIo = io.of('/dashboard');
 terminalIo.on('connection', (socket) => {
 
   // Log whenever a user connects
@@ -16,13 +16,13 @@ terminalIo.on('connection', (socket) => {
   // When we receive a 'message' event from our client, print out
   // the contents of that message and then echo it back to our client
   // using `io.emit()`
-  socket.on('message', (message) => {
+  socket.on('dashboard-message', (message) => {
     console.log("Message Received: " + message);
-    terminalIo.emit('message', {type:'new-message', text: message});
+    terminalIo.emit('dashboard-message', {type:'new-message', text: message});
   });
 });
 
-var terminalIo2 = io.of('/terminal2');
+var terminalIo2 = io.of('/terminal');
 terminalIo2.on('connection', (socket) => {
 
   // Log whenever a user connects
@@ -36,9 +36,17 @@ terminalIo2.on('connection', (socket) => {
   // When we receive a 'message' event from our client, print out
   // the contents of that message and then echo it back to our client
   // using `io.emit()`
-  socket.on('message', (message) => {
+  socket.on('terminal-1-message', (message) => {
     console.log("Message Received: " + message);
-    terminalIo2.emit('message', {type:'new-message', text: message});
+    terminalIo2.emit('terminal-1-message', {type:'new-message', text: message});
+  });
+
+  // When we receive a 'message' event from our client, print out
+  // the contents of that message and then echo it back to our client
+  // using `io.emit()`
+  socket.on('terminal-2-message', (message) => {
+    console.log("Message Received: " + message);
+    terminalIo2.emit('terminal-2-message', {type:'new-message', text: message});
   });
 });
 

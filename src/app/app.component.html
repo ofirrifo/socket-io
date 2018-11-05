@@ -1,4 +1,6 @@
 <div class="grid">
+
+  <!--DASHBOARD-->
   <div class="left">
     <div style="display: flex; flex-direction: column">
       <div style="color: red">DASHBOARD:</div>
@@ -13,9 +15,10 @@
     <div class="server-text">{{dashboard?.text}}</div>
   </div>
 
+  <!--TERMINAL ROOM 1-->
   <div class="left">
     <div style="display: flex; flex-direction: column">
-      <div style="color: red">TERMINAL:</div>
+      <div style="color: red">TERMINAL ROOM 1:</div>
       <div>
         Send Data To Server
         <input #input2 type="text" placeholder="Enter some text" (input)="input2$.next(input2.value)">
@@ -24,7 +27,22 @@
   </div>
   <div class="right">
     Data From Server
-    <div class="server-text">{{terminal?.text}}</div>
+    <div class="server-text">{{terminalRoom1?.text}}</div>
+  </div>
+
+  <!--TERMINAL ROOM 2-->
+  <div class="left">
+    <div style="display: flex; flex-direction: column">
+      <div style="color: red">TERMINAL ROOM 2:</div>
+      <div>
+        Send Data To Server
+        <input #input3 type="text" placeholder="Enter some text" (input)="input3$.next(input3.value)">
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    Data From Server
+    <div class="server-text">{{terminalRoom2?.text}}</div>
   </div>
 </div>
 

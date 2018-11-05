@@ -11,7 +11,8 @@ import { DashboardSocket } from './socket/dashboard-socket';
 })
 export class AppComponent {
   dashboard;
-  terminal;
+  terminalRoom1;
+  terminalRoom2;
 
   private dashboardSocket = DashboardSocket.instance;
   private terminalSocket = TerminalSocket.instance;
@@ -19,33 +20,50 @@ export class AppComponent {
 
   input$ = new Subject();
   input2$ = new Subject();
+  input3$ = new Subject();
 
   constructor() {
     this.dashboardTest();
-    this.terminalTest();
+    this.terminalRoom1Test();
+    this.terminalRoom2Test();
   }
 
   dashboardTest(): void {
-    this.terminalSocket.socket.on('message', (data) => {
+    const roomName = 'dashboard-message';
+    this.dashboardSocket.socket.on(roomName, (data) => {
       console.log('data: ', data);
       this.dashboard = data;
       console.log('dashboard: ', this.dashboard);
     });
 
     this.input$.subscribe((data) => {
-      this.terminalSocket.socket.emit('message', data);
+      this.dashboardSocket.socket.emit(roomName, data);
     });
   }
 
-  terminalTest(): void {
-    this.dashboardSocket.socket.on('message', (data) => {
+  terminalRoom1Test(): void {
+    const roomName = 'terminal-1-message';
+    this.terminalSocket.socket.on(roomName, (data) => {
       console.log('data: ', data);
-      this.terminal = data;
-      console.log('terminal: ', this.terminal);
+      this.terminalRoom1 = data;
+      console.log('terminal: ', this.terminalRoom1);
     });
 
     this.input2$.subscribe((data) => {
-      this.dashboardSocket.socket.emit('message', data);
+      this.terminalSocket.socket.emit(roomName, data);
+    });
+  }
+
+  terminalRoom2Test(): void {
+    const roomName = 'terminal-2-message';
+    this.terminalSocket.socket.on(roomName, (data) => {
+      console.log('data: ', data);
+      this.terminalRoom2 = data;
+      console.log('terminal-2: ', this.terminalRoom1);
+    });
+
+    this.input3$.subscribe((data) => {
+      this.terminalSocket.socket.emit(roomName, data);
     });
   }
 

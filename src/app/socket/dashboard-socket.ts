@@ -4,7 +4,7 @@ export class DashboardSocket extends SocketIoUtils {
   private static _instance: DashboardSocket = new DashboardSocket();
 
   constructor() {
-    super('terminal2');
+    super('dashboard');
   }
 
   static get instance(): DashboardSocket {
