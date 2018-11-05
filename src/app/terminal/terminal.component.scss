@@ -1,16 +1,17 @@
 :host {
 
   .terminal-container {
-    width: 100%;
+    width: 500px;
     height: 400px;
   }
 
-  .terminal-output {
-
+  #terminal {
+    width: 500px;
+    height: 400px;
   }
 
   #terminalOutput {
-    width: 100%;
+    width: 500px;
     height: 150px;
   }
 
