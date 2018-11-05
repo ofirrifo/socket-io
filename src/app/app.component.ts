@@ -4,8 +4,6 @@ import { TerminalSocket } from './socket/terminal-socket';
 import { DashboardSocket } from './socket/dashboard-socket';
 
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -38,7 +36,7 @@ export class AppComponent {
 
   terminal2(): void {
     this.dashboardSocket.socket.on('message', (data) => {
-      this.data2 = data;
+      this.data2 = JSON.parse(JSON.stringify(data));
     });
 
     this.input2$.subscribe((data) => {
