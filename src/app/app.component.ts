@@ -16,7 +16,11 @@ export class AppComponent {
   input2$ = new Subject();
 
   constructor() {
+    this.terminal1();
+    this.terminal2();
+  }
 
+  terminal1(): void {
     this.socketUtils.socketTerminal.on('message', (data) => {
       this.data = data;
     });
@@ -24,9 +28,9 @@ export class AppComponent {
     this.input$.subscribe((data) => {
       this.socketUtils.socketTerminal.emit('message', JSON.stringify(data));
     });
+  }
 
-    // **********************************************************************************
-
+  terminal2(): void {
     this.socketUtils.socketTerminal2.on('message', (data) => {
       this.data2 = data;
     });
@@ -34,8 +38,6 @@ export class AppComponent {
     this.input2$.subscribe((data) => {
       this.socketUtils.socketTerminal2.emit('message', JSON.stringify(data));
     });
-
   }
-
 
 }
