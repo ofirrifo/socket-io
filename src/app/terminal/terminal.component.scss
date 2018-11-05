@@ -1,5 +1,11 @@
 :host {
 
+  .terminal-container{
+    width: 400px;
+    height: 400px;
+    background-color: red;
+  }
+
   /deep/ {
     /**
     *  Default styles for xterm.js
