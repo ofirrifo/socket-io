@@ -9,7 +9,7 @@ terminalIo.on('connection', (socket) => {
   console.log('user connected');
 
   // Log whenever a client disconnects from our websocket server
-  socket.on('disconnect', function(){
+  socket.on('disconnect', function () {
     console.log('user disconnected');
   });
 
@@ -18,7 +18,7 @@ terminalIo.on('connection', (socket) => {
   // using `io.emit()`
   socket.on('dashboard-message', (message) => {
     console.log("Message Received: " + message);
-    terminalIo.emit('dashboard-message', {type:'new-message', text: message});
+    terminalIo.emit('dashboard-message', {type: 'new-message', text: convertData(message)});
   });
 });
 
@@ -29,7 +29,7 @@ terminalIo2.on('connection', (socket) => {
   console.log('user connected');
 
   // Log whenever a client disconnects from our websocket server
-  socket.on('disconnect', function(){
+  socket.on('disconnect', function () {
     console.log('user disconnected');
   });
 
@@ -38,7 +38,7 @@ terminalIo2.on('connection', (socket) => {
   // using `io.emit()`
   socket.on('terminal-1-message', (message) => {
     console.log("Message Received: " + message);
-    terminalIo2.emit('terminal-1-message', {type:'new-message', text: message});
+    terminalIo2.emit('terminal-1-message', {type: 'new-message', text: convertData(message)});
   });
 
   // When we receive a 'message' event from our client, print out
@@ -46,9 +46,13 @@ terminalIo2.on('connection', (socket) => {
   // using `io.emit()`
   socket.on('terminal-2-message', (message) => {
     console.log("Message Received: " + message);
-    terminalIo2.emit('terminal-2-message', {type:'new-message', text: message});
+    terminalIo2.emit('terminal-2-message', {type: 'new-message', text: convertData(message)});
   });
 });
+
+function convertData(data) {
+  return data.replace('\r', '\n\r').replace('\x7f', '\b \b');
+}
 
 // Initialize our websocket server on port 5000
 http.listen(5000, () => {
