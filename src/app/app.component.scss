@@ -1,8 +1,9 @@
 app-terminal {
-  margin: 25px;
+  //margin: 25px;
 }
 
 .grid {
+  box-sizing: border-box;
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
