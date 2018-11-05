@@ -24,7 +24,7 @@ export const TERMINAL_OPTIONS_OUTPUT: ITerminalOptions = {
 export class TerminalComponent implements OnInit {
 
   @Input() roomName: string;
-  @Input() withOutput: boolean;
+  @Input() withOutput = false;
 
   @ViewChild('terminal') terminalElement;
   @ViewChild('terminalOutput') terminalOutputElement;
@@ -49,9 +49,13 @@ export class TerminalComponent implements OnInit {
     term.writeln(`${redText}${this.roomName}${resetText}`);
 
     term.open(this.terminalElement.nativeElement);
+    if (this.withOutput) {
+      this.terminalElement.nativeElement.querySelector('textarea').disabled = true;
+    }
+
     term.fit();
 
-    if (!this.terminalOutput) {
+    if (this.withOutput === false) {
       term.on('data', (data) => {
         this.terminalSocket.emit(this.roomName, data);
       });

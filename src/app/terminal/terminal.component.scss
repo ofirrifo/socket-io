@@ -1,20 +1,21 @@
 :host {
 
-  .terminal-container{
+  .terminal-container {
     width: 100%;
     height: 400px;
   }
 
-  .terminal-output{
+  .terminal-output {
 
   }
 
-  #terminalOutput{
+  #terminalOutput {
     width: 100%;
     height: 150px;
   }
 
   /deep/ {
+
     /**
     *  Default styles for xterm.js
     */
