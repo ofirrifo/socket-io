@@ -2,7 +2,8 @@ import * as io from 'socket.io-client';
 
 export class SocketUtils {
   private static _instance: SocketUtils = new SocketUtils();
-  public readonly socket;
+  public readonly socketTerminal;
+  public readonly socketTerminal2;
 
 
   private constructor() {
@@ -10,7 +11,8 @@ export class SocketUtils {
       throw new Error('Error - use Singleton.getInstance()');
     }
 
-    this.socket = io('http://localhost:5000/terminal');
+    this.socketTerminal = io('http://localhost:5000/terminal');
+    this.socketTerminal2 = io('http://localhost:5000/terminal2');
   }
 
   static get instance(): SocketUtils {

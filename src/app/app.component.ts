@@ -17,20 +17,22 @@ export class AppComponent {
 
   constructor() {
 
-    this.socketUtils.socket.on('message', (data) => {
+    this.socketUtils.socketTerminal.on('message', (data) => {
       this.data = data;
     });
 
     this.input$.subscribe((data) => {
-      this.socketUtils.socket.emit('message', JSON.stringify(data));
+      this.socketUtils.socketTerminal.emit('message', JSON.stringify(data));
     });
 
-    this.socketUtils.socket.on('message', (data) => {
+    // **********************************************************************************
+
+    this.socketUtils.socketTerminal2.on('message', (data) => {
       this.data2 = data;
     });
 
     this.input2$.subscribe((data) => {
-      this.socketUtils.socket.emit('message', JSON.stringify(data));
+      this.socketUtils.socketTerminal2.emit('message', JSON.stringify(data));
     });
 
   }
