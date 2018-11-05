@@ -2,7 +2,8 @@ let app = require('express')();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
 
-io.on('connection', (socket) => {
+var terminalIo = io.of('/terminal');
+terminalIo.on('connection', (socket) => {
 
   // Log whenever a user connects
   console.log('user connected');
@@ -17,7 +18,7 @@ io.on('connection', (socket) => {
   // using `io.emit()`
   socket.on('message', (message) => {
     console.log("Message Received: " + message);
-    io.emit('message', {type:'new-message', text: message});
+    terminalIo.emit('message', {type:'new-message', text: message});
   });
 });
 

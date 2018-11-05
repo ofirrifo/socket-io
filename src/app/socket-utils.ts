@@ -1,4 +1,4 @@
-import * as socketIo from 'socket.io-client';
+import * as io from 'socket.io-client';
 
 export class SocketUtils {
   private static _instance: SocketUtils = new SocketUtils();
@@ -10,7 +10,7 @@ export class SocketUtils {
       throw new Error('Error - use Singleton.getInstance()');
     }
 
-    this.socket = socketIo('http://localhost:5000/');
+    this.socket = io('http://localhost:5000/terminal');
   }
 
   static get instance(): SocketUtils {

@@ -7,4 +7,14 @@
     Data From Server
     <div>{{data | json}}</div>
   </div>
+
+  <div class="left">
+    Send Data To Server
+    <input #input2 type="text" placeholder="Enter some text" (input)="input2$.next(input2.value)">
+  </div>
+  <div class="right">
+    Data From Server
+    <div>{{data2 | json}}</div>
+  </div>
 </div>
+
