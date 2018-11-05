@@ -41,12 +41,15 @@ terminalIo2.on('connection', (socket) => {
     terminalIo2.emit('terminal-1-message', {type: 'new-message', text: convertData(message)});
   });
 
-  // When we receive a 'message' event from our client, print out
-  // the contents of that message and then echo it back to our client
-  // using `io.emit()`
+
   socket.on('terminal-2-message', (message) => {
     console.log("Message Received: " + message);
     terminalIo2.emit('terminal-2-message', {type: 'new-message', text: convertData(message)});
+  });
+
+  socket.on('terminal-3-message', (message) => {
+    console.log("Message Received: " + message);
+    terminalIo2.emit('terminal-3-message', {type: 'new-message', text: convertData(message)});
   });
 });
 
