@@ -2,8 +2,8 @@ let app = require('express')();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);
 
-var terminalIo = io.of('/dashboard');
-terminalIo.on('connection', (socket) => {
+var dashboardIo = io.of('/dashboard');
+dashboardIo.on('connection', (socket) => {
 
   // Log whenever a user connects
   console.log('user connected');
@@ -18,7 +18,7 @@ terminalIo.on('connection', (socket) => {
   // using `io.emit()`
   socket.on('dashboard-message', (message) => {
     console.log("Message Received: " + message);
-    terminalIo.emit('dashboard-message', {type: 'new-message', text: convertData(message)});
+    dashboardIo.emit('dashboard-message', {type: 'new-message', text: convertData(message)});
   });
 });
 
