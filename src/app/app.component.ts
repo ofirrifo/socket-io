@@ -10,8 +10,9 @@ import { DashboardSocket } from './socket/dashboard-socket';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  data;
-  data2;
+  dashboard;
+  terminal;
+
   private dashboardSocket = DashboardSocket.instance;
   private terminalSocket = TerminalSocket.instance;
 
@@ -20,27 +21,31 @@ export class AppComponent {
   input2$ = new Subject();
 
   constructor() {
-    this.terminal1();
-    this.terminal2();
+    this.dashboardTest();
+    this.terminalTest();
   }
 
-  terminal1(): void {
+  dashboardTest(): void {
     this.terminalSocket.socket.on('message', (data) => {
-      this.data = JSON.parse(JSON.stringify(data));
+      console.log('data: ', data);
+      this.dashboard = data;
+      console.log('dashboard: ', this.dashboard);
     });
 
     this.input$.subscribe((data) => {
-      this.terminalSocket.socket.emit('message', JSON.stringify(data));
+      this.terminalSocket.socket.emit('message', data);
     });
   }
 
-  terminal2(): void {
+  terminalTest(): void {
     this.dashboardSocket.socket.on('message', (data) => {
-      this.data2 = JSON.parse(JSON.stringify(data));
+      console.log('data: ', data);
+      this.terminal = data;
+      console.log('terminal: ', this.terminal);
     });
 
     this.input2$.subscribe((data) => {
-      this.dashboardSocket.socket.emit('message', JSON.stringify(data));
+      this.dashboardSocket.socket.emit('message', data);
     });
   }
 
