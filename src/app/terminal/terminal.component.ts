@@ -8,7 +8,6 @@ const resetText = '\u001b[0m';
 export const TERMINAL_OPTIONS: ITerminalOptions = {
   theme: {
     background: '#262b37', // background color
-    foreground: '#ba6bff' // text color
   }
 };
 
