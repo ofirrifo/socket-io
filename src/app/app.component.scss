@@ -1,46 +1,40 @@
-app-terminal{
-  margin: 50px;
+app-terminal {
+  margin: 25px;
 }
 
 .grid {
+  height: 100vh;
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 200px 200px;
-  grid-gap: 20px;
-
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "terminal-room-1 terminal-room-3"
+  "terminal-room-2 terminal-room-3";
+  border: 1px solid;
 }
 
-.left {
-  background-color: #212121;
+.terminal-room-1 {
+  grid-area: terminal-room-1;
+  background-color: #ffb92b;
+  border: 1px solid;
   display: flex;
+  justify-content: center;
   align-items: center;
-  color: white;
-  padding: 20px;
-  font-weight: bold;
 }
 
-input {
-  height: 32px;
-  width: 332px;
-  margin-left: 20px;
-  font-size: 18px;
-}
-
-input:focus {
-  outline: 0;
-}
-
-.right {
-  background-color: #757575;
+.terminal-room-2 {
+  grid-area: terminal-room-2;
+  background-color: #ffb92b;
+  border: 1px solid;
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 18px;
-  padding: 20px;
-  font-weight: bold;
 }
 
-.server-text {
-  color: #FFC107;
-  margin-left: 20px;
+.terminal-room-3 {
+  grid-area: terminal-room-3;
+  background-color: #ffb92b;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

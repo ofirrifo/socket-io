@@ -1,10 +1,16 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Terminal } from 'xterm';
+import { ITerminalOptions, Terminal } from 'xterm';
 import { TerminalSocket } from '../socket/terminal-socket';
 import * as fit from 'xterm/lib/addons/fit/fit';
 
-const redText = '\u001b[31m';
+const redText = '\u001b[93m';
 const resetText = '\u001b[0m';
+export const TERMINAL_OPTIONS: ITerminalOptions = {
+  theme: {
+    background: '#262b37', // background color
+    foreground: '#ba6bff' // text color
+  }
+};
 
 @Component({
   selector: 'app-terminal',
@@ -25,7 +31,7 @@ export class TerminalComponent implements OnInit {
   ngOnInit() {
 
     Terminal.applyAddon(fit);
-    const term: any = new Terminal();
+    const term: any = new Terminal(TERMINAL_OPTIONS);
     term.writeln(`${redText}${this.roomName}${resetText}`);
 
     term.open(this.terminalElement.nativeElement);
