@@ -61,7 +61,6 @@ export class TerminalComponent implements OnInit {
       });
     }
 
-
     this.terminalSocket.socket.on(this.roomName, (data) => {
       term.write(data.text);
     });
