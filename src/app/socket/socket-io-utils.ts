@@ -11,4 +11,9 @@ export abstract class SocketIoUtils {
     this.socket.emit(roomName, data);
   }
 
+  on(roomName: string, callback: (data: any) => void): void {
+    this.socket.on(roomName, callback);
+  }
+
+
 }
