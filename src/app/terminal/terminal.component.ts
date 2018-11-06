@@ -84,7 +84,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   terminalOutput(): void {
     Terminal.applyAddon(fit);
     const term: any = new Terminal(TERMINAL_OPTIONS_OUTPUT);
-    term.write('Enter command ...');
+    term.write('Enter command...');
 
     term.open(this.terminalOutputElement.nativeElement);
     term.fit();
