@@ -30,6 +30,9 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   @ViewChild('terminal') terminalElement;
   @ViewChild('terminalOutput') terminalOutputElement;
   private terminalSocket = TerminalSocket.instance;
+  startTime;
+  endTime;
+  et;
 
 
   constructor() {
@@ -64,12 +67,17 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
     if (this.withOutput === false) {
       term.on('data', (data) => {
+        this.startTime = performance.now();
         this.terminalSocket.emit(this.roomName, data);
       });
     }
 
     this.terminalSocket.socket.on(this.roomName, (data) => {
       term.write(data.text);
+      this.endTime = performance.now();
+      this.et = `${this.endTime - this.startTime} milliseconds`;
+
+
     });
   }
 
