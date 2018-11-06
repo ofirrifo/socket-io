@@ -6,15 +6,13 @@ $cell-bc: #1e2431;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-template-areas: "terminal-room-1 terminal-room-3"
-  "terminal-room-2 terminal-room-4";
+  grid-template-areas: "terminal-room-1 terminal-room-3" "terminal-room-2 terminal-room-4";
 
 }
 
 .terminal-room-1 {
   grid-area: terminal-room-1;
   background-color: $cell-bc;
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +21,6 @@ $cell-bc: #1e2431;
 .terminal-room-2 {
   grid-area: terminal-room-2;
   background-color: $cell-bc;
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +29,6 @@ $cell-bc: #1e2431;
 .terminal-room-3 {
   grid-area: terminal-room-3;
   background-color: $cell-bc;
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +37,6 @@ $cell-bc: #1e2431;
 .terminal-room-4 {
   grid-area: terminal-room-4;
   background-color: $cell-bc;
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
