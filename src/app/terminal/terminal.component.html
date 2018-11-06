@@ -1,8 +1,8 @@
 <div class="et">{{et}}</div>
 <div *ngIf="withOutput">
   <div class="textarea-send">
-    <input type="text" #text placeholder="Enter command..."/>
-    <button (click)="send(text)">Send</button>
+    <input (keyup.enter)="send(text)" type="text" #text placeholder="Type command and Enter for send"/>
+    <!--<button (click)="send(text)">Send</button>-->
   </div>
 </div>
 
