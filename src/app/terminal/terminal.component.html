@@ -1,3 +1,10 @@
+<div class="terminal-output" *ngIf="withOutput">
+  <div class="textarea-send">
+    <textarea #text></textarea>
+    <button (click)="send(text)">Send</button>
+  </div>
+</div>
+
 <div class="terminal-container" class="disable">
   <div #terminal id="terminal" ></div>
 </div>

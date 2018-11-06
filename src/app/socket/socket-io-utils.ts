@@ -4,7 +4,7 @@ export abstract class SocketIoUtils {
   readonly socket: any;
 
   protected constructor(namespace: string) {
-    this.socket = io(`http://localhost:5000/${namespace}`, {
+    this.socket = io(`https://s1-dev-uqlvwdmwns.sentinelone.net/${namespace}`, {
       transports: ['websocket']
     });
   }

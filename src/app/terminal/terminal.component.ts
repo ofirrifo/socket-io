@@ -83,5 +83,9 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     });
   }
 
+  send(textElement): void {
+    this.terminalSocket.emit(this.roomName, textElement.value + '\r\n');
+    textElement.value = '';
+  }
 
 }
