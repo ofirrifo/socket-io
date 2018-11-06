@@ -25,6 +25,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   @Input() roomName: string;
   @Input() withOutput;
+  @Input() measureTime: boolean;
 
   @ViewChild('terminal') terminalElement;
   @ViewChild('terminalOutput') terminalOutputElement;
@@ -48,7 +49,11 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   terminal() {
     Terminal.applyAddon(fit);
     const term: any = new Terminal(TERMINAL_OPTIONS);
-    term.writeln(`${redText}${this.roomName}${resetText}`);
+    let title = `${redText}${this.roomName}${resetText}`;
+    if (this.measureTime) {
+      title += ' Measure Time CLIENT <==> BE';
+    }
+    term.writeln(title);
 
     term.open(this.terminalElement.nativeElement);
     if (this.withOutput) {
