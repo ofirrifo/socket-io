@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: "terminal-room-1 terminal-room-3"
-  "terminal-room-2 terminal-room-3";
+  "terminal-room-2 terminal-room-4";
   border: 1px solid;
 }
 
@@ -29,6 +29,15 @@
 
 .terminal-room-3 {
   grid-area: terminal-room-3;
+  background-color: #ffb92b;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal-room-4 {
+  grid-area: terminal-room-4;
   background-color: #ffb92b;
   border: 1px solid;
   display: flex;
