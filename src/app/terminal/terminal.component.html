@@ -7,7 +7,7 @@
 </div>
 
 <div class="terminal-container">
-  <div #terminal id="terminal"></div>
+  <div #terminal id="terminal" [class.with-output]="withOutput"></div>
 </div>
 
 <div class="terminal-output" *ngIf="withOutput">
