@@ -12,7 +12,7 @@ export const TERMINAL_OPTIONS: ITerminalOptions = {
 };
 export const TERMINAL_OPTIONS_OUTPUT: ITerminalOptions = {
   theme: {
-    background: '#FF0000', // background color
+    background: '#262b37', // background color
   }
 };
 
