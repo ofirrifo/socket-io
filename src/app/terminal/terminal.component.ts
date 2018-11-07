@@ -10,6 +10,11 @@ export const TERMINAL_OPTIONS: ITerminalOptions = {
     background: '#262b37', // background color
   }
 };
+export const TERMINAL_OPTIONS_DISABLE: ITerminalOptions = {
+  theme: {
+    background: '#424D58', // background color
+  }
+};
 export const TERMINAL_OPTIONS_OUTPUT: ITerminalOptions = {
   theme: {
     background: '#262b37', // background color
@@ -45,14 +50,12 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.terminal();
-    if (this.withOutput) {
-      this.terminalOutput();
-    }
   }
 
   terminal() {
     Terminal.applyAddon(fit);
-    const term: any = new Terminal(TERMINAL_OPTIONS);
+    const terminalOptions = this.withOutput ? TERMINAL_OPTIONS_DISABLE : TERMINAL_OPTIONS;
+    const term: any = new Terminal(terminalOptions);
     let title = `${redText}${this.roomName}${resetText}`;
     if (this.measureTime) {
       title += ' Measure Time CLIENT <==> BE';

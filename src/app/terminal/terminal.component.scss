@@ -4,7 +4,7 @@
     font-family: Arial;
   }
 
-  .title{
+  .title {
     color: #c27cff;
   }
 
@@ -16,7 +16,7 @@
     display: flex;
   }
 
-  .et-text{
+  .et-text {
     margin-left: auto;
   }
 
@@ -73,7 +73,7 @@
     border: 1px white solid;
   }
 
-  .terminal-output{
+  .terminal-output {
     border: 1px white solid;
   }
 
@@ -82,8 +82,12 @@
     height: 400px;
   }
 
-  .with-output{
-    height: 250px !important;
+  .with-output {
+    height: 350px !important;
+
+    .terminal.xterm {
+      cursor: auto;
+    }
   }
 
   #terminalOutput {
