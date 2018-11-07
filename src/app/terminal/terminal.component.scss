@@ -85,8 +85,8 @@
   .with-output {
     height: 350px !important;
 
-    .terminal.xterm {
-      cursor: auto;
+    .xterm {
+      cursor: auto !important;
     }
   }
 
@@ -96,6 +96,10 @@
   }
 
   /deep/ {
+
+    .xterm-screen{
+      height: 380px !important;
+    }
 
     /**
     *  Default styles for xterm.js
@@ -232,4 +236,16 @@
 
   }
 
+}
+
+/deep/ .with-output {
+  height: 350px !important;
+
+  .xterm {
+    cursor: auto !important;
+  }
+
+  .xterm-screen{
+    height: 330px !important;
+  }
 }
