@@ -1,4 +1,6 @@
-<div class="et">{{et}}</div>
+<div class="et">
+ <span>{{titleText}}</span>   {{et}}
+</div>
 <div *ngIf="withOutput">
   <div class="textarea-send">
     <input (keyup.enter)="send(text)" type="text" #text placeholder="Type command and Enter for send"/>

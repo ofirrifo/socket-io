@@ -26,6 +26,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   @Input() roomName: string;
   @Input() withOutput;
   @Input() measureTime: boolean;
+  @Input() titleText: string;
 
   @ViewChild('terminal') terminalElement;
   @ViewChild('terminalOutput') terminalOutputElement;

@@ -2,12 +2,14 @@
   <div class="terminal-room-1">
     <app-terminal
       [withOutput]="false"
+      [titleText]="'Windows Terminal'"
       [roomName]="'terminal-1-message'"
     ></app-terminal>
   </div>
   <div class="terminal-room-2">
     <app-terminal
       [withOutput]="false"
+      [titleText]="'Mac Terminal'"
       [roomName]="'terminal-2-message'"
     ></app-terminal>
   </div>
@@ -19,6 +21,7 @@
   </div>
   <div class="terminal-room-4">
     <app-terminal
+      [titleText]="'NOT Terminal - Just test latency between Client and BE'"
       [withOutput]="false"
       [measureTime]="true"
       [roomName]="'terminal-4-message'"
