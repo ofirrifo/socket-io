@@ -76,7 +76,8 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     this.terminalSocket.socket.on(this.roomName, (data) => {
       term.write(data.text);
       this.endTime = performance.now();
-      this.et = `(${this.endTime - this.startTime} milliseconds)`;
+      const es = parseInt((this.endTime - this.startTime).toString(), 0);
+      this.et = `(${es} milliseconds)`;
       this.cd.detectChanges();
     });
   }
