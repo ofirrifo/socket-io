@@ -84,6 +84,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         }
         this.isOnline = true;
         this.cd.detectChanges();
+        this.startTime = void 0;
       }
     });
   }
