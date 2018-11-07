@@ -78,8 +78,10 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       if (data.text !== '±') {
         term.write(data.text);
         this.endTime = performance.now();
-        const es = parseInt((this.endTime - this.startTime).toString(), 0);
-        this.et = `(${es} milliseconds)`;
+        if (this.startTime) {
+          const es = parseInt((this.endTime - this.startTime).toString(), 0);
+          this.et = `(${es} milliseconds)`;
+        }
         this.isOnline = true;
         this.cd.detectChanges();
       }
