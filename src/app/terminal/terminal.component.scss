@@ -8,6 +8,10 @@
     color: #c27cff;
   }
 
+  app-led {
+    margin-right: 10px;
+  }
+
   .et {
     font-size: 16px;
     font-weight: bold;
@@ -97,7 +101,7 @@
 
   /deep/ {
 
-    .xterm-screen{
+    .xterm-screen {
       height: 380px !important;
     }
 
@@ -245,7 +249,7 @@
     cursor: auto !important;
   }
 
-  .xterm-screen{
+  .xterm-screen {
     height: 330px !important;
   }
 }
