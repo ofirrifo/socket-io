@@ -15,11 +15,6 @@ export const TERMINAL_OPTIONS_DISABLE: ITerminalOptions = {
     background: '#424D58', // background color
   }
 };
-export const TERMINAL_OPTIONS_OUTPUT: ITerminalOptions = {
-  theme: {
-    background: '#262b37', // background color
-  }
-};
 
 @Component({
   selector: 'app-terminal',
@@ -39,6 +34,8 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   startTime;
   endTime;
   et;
+
+  isOnline = false;
 
 
   constructor(private cd: ChangeDetectorRef) {
@@ -82,22 +79,6 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       const es = parseInt((this.endTime - this.startTime).toString(), 0);
       this.et = `(${es} milliseconds)`;
       this.cd.detectChanges();
-    });
-  }
-
-  terminalOutput(): void {
-    Terminal.applyAddon(fit);
-    const term: any = new Terminal(TERMINAL_OPTIONS_OUTPUT);
-    term.write('Enter command...');
-
-    term.open(this.terminalOutputElement.nativeElement);
-    term.fit();
-    term.on('data', (data) => {
-      this.terminalSocket.emit(this.roomName, data);
-    });
-
-    this.terminalSocket.socket.on(this.roomName, (data) => {
-      term.write(data.text);
     });
   }
 
