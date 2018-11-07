@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ITerminalOptions, Terminal } from 'xterm';
 import { TerminalSocket } from '../socket/terminal-socket';
 import * as fit from 'xterm/lib/addons/fit/fit';
@@ -35,7 +35,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   et;
 
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -76,8 +76,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       term.write(data.text);
       this.endTime = performance.now();
       this.et = `${this.endTime - this.startTime} milliseconds`;
-
-
+      this.cd.detectChanges();
     });
   }
 
