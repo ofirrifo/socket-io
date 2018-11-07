@@ -47,6 +47,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.terminal();
+    this.terminalSocket.emit(this.roomName, '±');
   }
 
   terminal() {
@@ -74,11 +75,14 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     }
 
     this.terminalSocket.socket.on(this.roomName, (data) => {
-      term.write(data.text);
-      this.endTime = performance.now();
-      const es = parseInt((this.endTime - this.startTime).toString(), 0);
-      this.et = `(${es} milliseconds)`;
-      this.cd.detectChanges();
+      if (data.text !== '±') {
+        term.write(data.text);
+        this.endTime = performance.now();
+        const es = parseInt((this.endTime - this.startTime).toString(), 0);
+        this.et = `(${es} milliseconds)`;
+        this.isOnline = true;
+        this.cd.detectChanges();
+      }
     });
   }
 
