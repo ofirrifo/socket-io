@@ -34,6 +34,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   startTime;
   endTime;
   et;
+  prompt = '-> Dev';
 
   isOnline = false;
 
@@ -54,39 +55,16 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     Terminal.applyAddon(fit);
     const terminalOptions = this.withOutput ? TERMINAL_OPTIONS_DISABLE : TERMINAL_OPTIONS;
     const term: any = new Terminal(terminalOptions);
-    let title = `${redText}${this.roomName}${resetText}`;
-    if (this.measureTime) {
-      title += ' Measure Time CLIENT <==> BE';
-    }
-    term.writeln(title);
+
+    term.on('key', (data, event) => {
+      term.write(data);
+      this.et = data;
+    });
 
     term.open(this.terminalElement.nativeElement);
-    if (this.withOutput) {
-      this.terminalElement.nativeElement.querySelector('textarea').disabled = true;
-    }
 
     term.fit();
 
-    if (this.withOutput === false) {
-      term.on('data', (data) => {
-        this.startTime = performance.now();
-        this.terminalSocket.emit(this.roomName, data);
-      });
-    }
-
-    this.terminalSocket.socket.on(this.roomName, (data) => {
-      if (data.text !== '±') {
-        term.write(data.text);
-        this.endTime = performance.now();
-        if (this.startTime) {
-          const es = parseInt((this.endTime - this.startTime).toString(), 0);
-          this.et = `(${es} milliseconds)`;
-        }
-        this.isOnline = true;
-        this.cd.detectChanges();
-        this.startTime = void 0;
-      }
-    });
   }
 
   send(textElement): void {
