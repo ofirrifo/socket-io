@@ -1,31 +1,7 @@
 <div class="grid">
-  <div class="terminal-room-1">
-    <app-terminal
-      [withOutput]="false"
-      [titleText]="'Windows Terminal'"
-      [roomName]="'terminal-1-message'"
-    ></app-terminal>
-  </div>
-  <div class="terminal-room-2">
-    <app-terminal
-      [withOutput]="false"
-      [titleText]="'Mac Terminal'"
-      [roomName]="'terminal-2-message'"
-    ></app-terminal>
-  </div>
-  <div class="terminal-room-3">
-    <app-terminal
-      [titleText]="'Windows Terminal - Enter command in the input and click Enter'"
-      [withOutput]="true"
-      [roomName]="'terminal-3-message'"
-    ></app-terminal>
-  </div>
-  <div class="terminal-room-4">
-    <app-terminal
-      [titleText]="'NOT Terminal - Just for measure time between FE <==> BE'"
-      [withOutput]="false"
-      [measureTime]="true"
-      [roomName]="'terminal-4-message'"
-    ></app-terminal>
-  </div>
+  <app-terminal
+    [withOutput]="false"
+    [titleText]="'Windows Terminal'"
+    [roomName]="'terminal-1-message'"
+  ></app-terminal>
 </div>

@@ -1,15 +1,3 @@
-<div class="et">
-  <app-led [class.red]="!isOnline"></app-led>
-  <span class="title">{{titleText}}</span>
-  <span class="et-text">{{et}}</span>
-</div>
-
-<div *ngIf="withOutput">
-  <div class="textarea-send">
-    <input (keyup.enter)="send(text)" type="text" #text placeholder="Type command and Enter for send"/>
-  </div>
-</div>
-
 <div class="terminal-container">
   <div #terminal id="terminal" [class.with-output]="withOutput"></div>
 </div>

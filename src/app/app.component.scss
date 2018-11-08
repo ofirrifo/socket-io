@@ -1,43 +1,10 @@
 $cell-bc: #1e2431;
 
 .grid {
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: "terminal-room-1 terminal-room-3" "terminal-room-2 terminal-room-4";
+  width: 100vw;
 
-}
-
-.terminal-room-1 {
-  grid-area: terminal-room-1;
-  background-color: $cell-bc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.terminal-room-2 {
-  grid-area: terminal-room-2;
-  background-color: $cell-bc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.terminal-room-3 {
-  grid-area: terminal-room-3;
-  background-color: $cell-bc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.terminal-room-4 {
-  grid-area: terminal-room-4;
-  background-color: $cell-bc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
